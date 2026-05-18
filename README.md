@@ -22,7 +22,6 @@
 
 ## 📸 Sneak Peek
 
-*(Pro-tip: Take a screenshot of your app running, save it as `screenshot.png` in your project folder, and it will appear here!)*
 
 ![Steam Dashboard Screenshot](./screenshot.png)
 
