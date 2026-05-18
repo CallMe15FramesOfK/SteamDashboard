@@ -1,0 +1,209 @@
+/* Reset basic styling */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1b2838; /* Steam dark blue background */
+    color: #c7d5e0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px 20px;
+    min-height: 100vh;
+}
+
+/* Main App Wrapper */
+.container {
+    background: linear-gradient(135deg, #171a21 0%, #212c3d 100%);
+    padding: 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    width: 100%;
+    max-width: 800px;
+}
+
+h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 25px;
+    font-size: 1.8rem;
+    letter-spacing: 0.5px;
+}
+
+/* Search Form */
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 12px 15px;
+    background-color: #101214;
+    border: 1px solid #3d4a5d;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: #66c0f4; /* Steam accent blue */
+}
+
+button {
+    padding: 12px 20px;
+    background-color: #66c0f4;
+    color: #171a21;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color: #41a4de;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* Profile Header Card */
+.profile-card {
+    background-color: #101214;
+    border-radius: 10px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 25px;
+    border: 1px solid #2a475e;
+}
+
+.avatar {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #66c0f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(102, 192, 244, 0.15);
+}
+
+.profile-info h3 {
+    color: #ffffff;
+    margin-bottom: 5px;
+    font-size: 1.5rem;
+}
+
+.profile-link {
+    display: inline-block;
+    margin-top: 5px;
+    color: #66c0f4;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.profile-link:hover {
+    text-decoration: underline;
+}
+
+/* Games List Section */
+/* Games Grid Section */
+.games-section {
+    background-color: #171a21;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #2a475e;
+}
+
+.games-section h4 {
+    color: #ffffff;
+    border-bottom: 2px solid #2a475e;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* NEW: The Grid System */
+.games-grid {
+    display: grid;
+    /* This automatically creates columns that are at least 220px wide, 
+       and fills the available space */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* NEW: Card Styling */
+.game-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #101214;
+    border-radius: 8px;
+    text-decoration: none; /* Removes the underline from the link */
+    border: 1px solid #2a475e;
+    overflow: hidden; /* Keeps the banner image neatly inside the rounded corners */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+    border-color: #66c0f4; /* Highlights the border blue on hover */
+}
+
+/* NEW: Banner Styling */
+.game-banner {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 460 / 215; /* Forces the standard Steam header proportion */
+    object-fit: cover;
+    background-color: #1a2332; /* Placeholder color while image loads */
+}
+
+.game-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.game-details strong {
+    color: #ffffff;
+    font-size: 1.05rem;
+    display: block;
+    margin-bottom: 6px;
+    
+    /* These 3 lines force long game names to cut off with "..." so they don't break the grid */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.game-details span {
+    display: block;
+    color: #8f98a0;
+    font-size: 0.85rem;
+}
+
+/* Error Messages & Private Status */
+.error {
+    background-color: rgba(255, 82, 82, 0.1);
+    color: #ff5252;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 82, 82, 0.3);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.private-notice {
+    text-align: center;
+    color: #8f98a0;
+    font-style: italic;
+    padding: 20px 0;
+}

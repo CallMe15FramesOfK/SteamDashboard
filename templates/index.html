@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Steam Dashboard</h2>
+        
+        <form method="POST">
+            <input type="text" name="steamid" placeholder="Paste full Steam URL, ID, or Custom Name..." required>
+            <button type="submit">Search</button>
+        </form>
+
+        {% if error %}
+            <div class="error">{{ error }}</div>
+        {% endif %}
+
+        {% if player %}
+            <div class="profile-card">
+                <img class="avatar" src="{{ player.avatarfull }}" alt="Profile Picture">
+                <div class="profile-info">
+                    <h3>{{ player.personaname }}</h3>
+                    <a class="profile-link" href="{{ player.profileurl }}" target="_blank">View Steam Profile &rarr;</a>
+                </div>
+            </div>
+            
+            {% if games %}
+                <div class="games-section">
+                    {% if games.private %}
+                        <p class="private-notice">This user's game library is set to private.</p>
+                    {% else %}
+                        <h4>Games Owned: {{ games.total_games }}</h4>
+                        
+                        <div class="games-grid">
+                            
+                            {% for game in games.top_games %}
+                                <a href="https://store.steampowered.com/app/{{ game.appid }}" target="_blank" class="game-card">
+                                    
+                                    <img class="game-banner" src="https://cdn.cloudflare.steamstatic.com/steam/apps/{{ game.appid }}/header.jpg" alt="{{ game.name }}">
+                                    
+                                    <div class="game-details">
+                                        <strong>{{ game.name }}</strong>
+                                        <span>{{ (game.playtime_forever / 60)|round(1) }} hours on record</span>
+                                    </div>
+                                </a>
+                            {% endfor %}
+                            
+                        </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+
+</body>
+</html>
